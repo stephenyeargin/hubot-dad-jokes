@@ -1,0 +1,35 @@
+{
+  "name": "hubot-dad-jokes",
+  "description": "Load a dad joke from fatherhood.gov.",
+  "version": "1.0.0",
+  "author": "Stephen Yeargin <stephen@yearg.in>",
+  "license": "MIT",
+  "keywords": "hubot,hubot-scripts,dad jokes,jokes",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hubot-scripts/hubot-dad-jokes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hubot-scripts/hubot-dad-jokes/issues"
+  },
+  "peerDependencies": {
+    "hubot": "^3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coffee-script": "^1.12.7",
+    "hubot-test-helper": "^1.9.0",
+    "husky": "^4.2.5",
+    "matchdep": "^2.0.0",
+    "mocha": "^8.1.1",
+    "nock": "^13.0.2",
+    "release-it": "^13.6.5",
+    "sinon": "^9.0.2",
+    "sinon-chai": "^3.5.0"
+  },
+  "main": "index.coffee",
+  "scripts": {
+    "release": "release-it",
+    "test": "mocha --require coffee-script/register \"test/**/*.coffee\" --reporter spec"
+  }
+}
