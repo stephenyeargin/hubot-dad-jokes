@@ -1,6 +1,6 @@
 # Dad Jokes
 
-[![npm version](https://badge.fury.io/js/hubot-dad-joke.svg)](http://badge.fury.io/js/hubot-dad-joke) [![Build Status](https://travis-ci.com/stephenyeargin/hubot-dad-joke.png)](https://travis-ci.com/stephenyeargin/hubot-dad-joke)
+[![npm version](https://badge.fury.io/js/hubot-dad-jokes.svg)](http://badge.fury.io/js/hubot-dad-jokes) [![Build Status](https://travis-ci.com/stephenyeargin/hubot-dad-jokes.png)](https://travis-ci.com/stephenyeargin/hubot-dad-jokes)
 
 Load a dad joke from [fatherhood.gov](https://fatherhood.gov/).
 
