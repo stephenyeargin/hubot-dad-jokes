@@ -4,7 +4,7 @@
 
 Load a dad joke from [fatherhood.gov](https://fatherhood.gov/).
 
-See [`src/dad-jokes.coffee`](src/dad-jokes.coffee) for full documentation.
+![Screenshot](screenshot.png)
 
 ## Installation
 

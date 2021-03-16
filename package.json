@@ -7,10 +7,10 @@
   "keywords": "hubot,hubot-scripts,dad jokes,jokes",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-dad-jokes.git"
+    "url": "git://github.com/stephenyeargin/hubot-dad-jokes.git"
   },
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-dad-jokes/issues"
+    "url": "https://github.com/stephenyeargin/hubot-dad-jokes/issues"
   },
   "peerDependencies": {
     "hubot": "^3"
