@@ -1,7 +1,7 @@
 {
   "name": "hubot-dad-jokes",
   "description": "Load a dad joke from fatherhood.gov.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Stephen Yeargin <stephen@yearg.in>",
   "license": "MIT",
   "keywords": [
