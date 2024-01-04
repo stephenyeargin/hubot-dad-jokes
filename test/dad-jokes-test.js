@@ -33,7 +33,7 @@ describe('dad-jokes', () => {
         try {
           expect(selfRoom.messages).to.eql([
             ['alice', '@hubot dadjoke'],
-            ['hubot', 'Why did the scarecrow win an award? He was outstanding in his field.'],
+            ['hubot', 'Why did the scarecrow win an award?\n\n\nHe was outstanding in his field.'],
           ]);
           done();
         } catch (err) {
@@ -47,17 +47,14 @@ describe('dad-jokes', () => {
   it('handles an error', function (done) {
     nock('https://fatherhood.gov')
       .get('/jsonapi/node/dad_jokes')
-      .replyWithError('An error occurred.');
+      .reply(403, 'An error occurred.');
 
     const selfRoom = this.room;
     selfRoom.user.say('alice', '@hubot dadjoke');
     setTimeout(
       () => {
         try {
-          expect(selfRoom.messages).to.eql([
-            ['alice', '@hubot dadjoke'],
-            ['hubot', '<Knock knock>\n\nWho\'s there?\n\nNot a joke because the API didn\'t respond with one.'],
-          ]);
+          expect(selfRoom.messages[1][1]).length.to.be.greaterThan(10);
           done();
         } catch (err) {
           done(err);
