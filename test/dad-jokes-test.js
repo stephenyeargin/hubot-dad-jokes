@@ -1,66 +1,34 @@
-/* eslint-disable func-names */
-/* global describe beforeEach afterEach it */
-const Helper = require('hubot-test-helper');
-const chai = require('chai');
+const test = require('node:test');
+const assert = require('node:assert/strict');
 const nock = require('nock');
+const { createTestBot } = require('./common/TestBot');
 
-const {
-  expect,
-} = chai;
+test('retrieves a dad joke', async () => {
+  const ctx = await createTestBot();
 
-const helper = new Helper('../src/dad-jokes.js');
-
-describe('dad-jokes', () => {
-  beforeEach(function () {
-    nock.disableNetConnect();
-    this.room = helper.createRoom();
-  });
-
-  afterEach(function () {
-    nock.cleanAll();
-    this.room.destroy();
-  });
-
-  it('retrieves a dad joke', function (done) {
+  try {
     nock('https://fatherhood.gov')
       .get('/jsonapi/node/dad_jokes')
       .replyWithFile(200, `${__dirname}/fixtures/dad_jokes.json`);
 
-    const selfRoom = this.room;
-    selfRoom.user.say('alice', '@hubot dadjoke');
-    setTimeout(
-      () => {
-        try {
-          expect(selfRoom.messages).to.eql([
-            ['alice', '@hubot dadjoke'],
-            ['hubot', 'Why did the scarecrow win an award?\n\n\nHe was outstanding in his field.'],
-          ]);
-          done();
-        } catch (err) {
-          done(err);
-        }
-      },
-      1000,
-    );
-  });
+    const response = await ctx.sendAndWaitForResponse('@hubot dadjoke');
+    assert.equal(response, 'Why did the scarecrow win an award?\n\n\nHe was outstanding in his field.');
+  } finally {
+    ctx.shutdown();
+  }
+});
 
-  it('handles an error', function (done) {
+test('handles an error', async () => {
+  const ctx = await createTestBot();
+
+  try {
     nock('https://fatherhood.gov')
       .get('/jsonapi/node/dad_jokes')
       .reply(403, 'An error occurred.');
 
-    const selfRoom = this.room;
-    selfRoom.user.say('alice', '@hubot dadjoke');
-    setTimeout(
-      () => {
-        try {
-          expect(selfRoom.messages[1][1]).length.to.be.greaterThan(10);
-          done();
-        } catch (err) {
-          done(err);
-        }
-      },
-      1000,
-    );
-  });
+    const response = await ctx.sendAndWaitForResponse('@hubot dadjoke');
+    assert.ok(response.length > 10);
+  } finally {
+    ctx.shutdown();
+  }
 });

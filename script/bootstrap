@@ -14,5 +14,5 @@ fi
 
 npm install
 
-# Make sure mocha is on the path
+# Make sure executables are on the path
 export PATH="node_modules/.bin:$PATH"
