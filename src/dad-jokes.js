@@ -23,7 +23,7 @@ module.exports = (robot) => {
       if (err || res.statusCode !== 200) {
         robot.logger.error(res?.statusCode, err || 'Unspecified');
         robot.logger.debug(body);
-        robot.logger.warn('Using cached dad jokes instead ...');
+        robot.logger.debug('Using cached dad jokes instead ...');
         msg.send(getRandomJoke(cachedBody.data));
         return;
       }
